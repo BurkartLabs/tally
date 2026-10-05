@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'">
+<title>Tally</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header id="titlebar">
+  <div class="menu">
+    <button id="fileBtn" class="menu-btn">File</button>
+    <div id="fileMenu" class="dropdown hidden">
+      <button data-act="newSheet">New Sheet<kbd>Ctrl+N</kbd></button>
+      <button data-act="newProject">New Project<kbd>Ctrl+Shift+N</kbd></button>
+      <hr>
+      <button data-act="openSheet">Open Sheet<kbd>Ctrl+O</kbd></button>
+      <button data-act="openProject">Open Project<kbd>Ctrl+Shift+O</kbd></button>
+      <hr>
+      <button data-act="save">Save Sheet<kbd>Ctrl+S</kbd></button>
+      <button data-act="saveAs">Save As…<kbd>Ctrl+Shift+S</kbd></button>
+      <hr>
+      <button data-act="quit">Quit<kbd>Ctrl+Q</kbd></button>
+    </div>
+  </div>
+  <div id="title"></div>
+</header>
+
+<div id="app">
+  <aside id="sidebar">
+    <div class="side-head"><span>Projects</span></div>
+    <div id="tree"></div>
+  </aside>
+
+  <main>
+    <div id="toolbar">
+      <select id="fmt" title="Number format">
+        <option value="general">General</option>
+        <option value="time">Time</option>
+        <option value="date">Date</option>
+        <option value="datetime">Date + Time</option>
+        <option value="USD">USD  $</option>
+        <option value="CAD">CAD  $</option>
+        <option value="EUR">EUR  €</option>
+        <option value="GBP">GBP  £</option>
+      </select>
+      <select id="dec" title="Currency decimals (rounding)">
+        <option value="2">.00</option>
+        <option value="1">.0</option>
+        <option value="0">Whole</option>
+      </select>
+      <span class="sep"></span>
+      <button class="tb" data-al="left" title="Align left"><svg viewBox="0 0 16 16"><path d="M2 3h12M2 6.5h8M2 10h12M2 13.5h8"/></svg></button>
+      <button class="tb" data-al="center" title="Align center"><svg viewBox="0 0 16 16"><path d="M2 3h12M4 6.5h8M2 10h12M4 13.5h8"/></svg></button>
+      <button class="tb" data-al="right" title="Align right"><svg viewBox="0 0 16 16"><path d="M2 3h12M6 6.5h8M2 10h12M6 13.5h8"/></svg></button>
+      <span class="sep"></span>
+      <select id="size" title="Font size"></select>
+      <span class="sep"></span>
+      <label class="swatch" title="Cell background"><span>Fill</span><input type="color" id="bg" value="#14161b"></label>
+      <button class="tb small" id="bgReset" title="Clear background">×</button>
+      <label class="swatch" title="Font color"><span>Text</span><input type="color" id="fg" value="#e6e8ee"></label>
+      <button class="tb small" id="fgReset" title="Reset font color">×</button>
+    </div>
+    <div id="formulabar">
+      <span id="cellname">A1</span>
+      <input id="formula" spellcheck="false" placeholder="Value or =ADD(A1,B1)">
+    </div>
+    <div id="gridWrap"><table id="grid"></table></div>
+  </main>
+</div>
+
+<div id="modal" class="hidden">
+  <form id="modalBox">
+    <label id="modalTitle"></label>
+    <input id="modalInput" spellcheck="false" autocomplete="off">
+    <div class="row"><button type="button" id="modalCancel">Cancel</button><button type="submit" class="primary">OK</button></div>
+  </form>
+</div>
+<div id="toast" class="hidden"></div>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "tally",
+  "version": "1.0.0",
+  "description": "A simple dark spreadsheet",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-packager . Tally --platform=win32 --arch=x64 --out=dist --overwrite --prune=true --ignore=^/dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@electron/packager": "^20.3.0",
+    "electron": "^44.5.1"
+  }
+}
